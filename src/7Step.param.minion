@@ -1,0 +1,229 @@
+MINION 3
+# CSETopLevel_number = 0
+# CSETopLevel_eliminated_expressions = 0
+# CSETopLevel_total_size = 0
+# CSE_active_number = 20
+# CSE_active_eliminated_expressions = 45
+# CSE_active_total_size = 111
+**VARIABLES**
+DISCRETE stateBuckets_00001_00001 #
+{3..5}
+DISCRETE stateBuckets_00001_00002 #
+{0..8}
+DISCRETE stateBuckets_00001_00003 #
+{0..7}
+DISCRETE stateBuckets_00001_00004 #
+{1..7}
+DISCRETE stateBuckets_00001_00005 #
+{1..7}
+DISCRETE stateBuckets_00001_00006 #
+{1..4}
+DISCRETE stateBuckets_00002_00001 #
+{0..5}
+DISCRETE stateBuckets_00002_00002 #
+{0..5}
+DISCRETE stateBuckets_00002_00003 #
+{1..5}
+DISCRETE stateBuckets_00002_00004 #
+{0..4}
+DISCRETE stateBuckets_00002_00005 #
+{1..5}
+DISCRETE stateBuckets_00002_00006 #
+{1..4}
+DISCRETE stateBuckets_00003_00001 #
+{0..3}
+DISCRETE stateBuckets_00003_00002 #
+{0..3}
+DISCRETE stateBuckets_00003_00003 #
+{0..3}
+DISCRETE stateBuckets_00003_00004 #
+{1..3}
+DISCRETE stateBuckets_00003_00005 #
+{0..2}
+DISCRETE actionFrom_00002 #
+{1..3}
+DISCRETE actionFrom_00003 #
+{1..3}
+DISCRETE actionFrom_00004 #
+{1..2}
+DISCRETE actionFrom_00005 #
+{1..3}
+DISCRETE actionFrom_00006 #
+{1..2}
+DISCRETE actionTo_00001 #
+{2..3}
+DISCRETE actionTo_00002 #
+{1..3}
+DISCRETE actionTo_00003 #
+{1..3}
+DISCRETE actionTo_00004 #
+{1..3}
+DISCRETE actionTo_00005 #
+{1..2}
+DISCRETE actionTo_00007 #
+{1..2}
+DISCRETE actionAmount_00001 #
+{3..5}
+DISCRETE actionAmount_00002 #
+{1..5}
+DISCRETE actionAmount_00003 #
+{1..5}
+DISCRETE actionAmount_00004 #
+{1..5}
+DISCRETE actionAmount_00005 #
+{1..5}
+DISCRETE actionAmount_00006 #
+{1..3}
+DISCRETE aux15 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], (actionTo_00002 + -1))
+{1..8}
+DISCRETE aux16 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00003, stateBuckets_00002_00003, stateBuckets_00003_00003], (actionTo_00003 + -1))
+{1..7}
+DISCRETE aux17 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00004, stateBuckets_00002_00004, stateBuckets_00003_00004], (actionTo_00004 + -1))
+{1..7}
+DISCRETE aux18 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00005, stateBuckets_00002_00005, stateBuckets_00003_00005], (actionFrom_00005 + -1))
+{0..2}
+DISCRETE aux19 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00003, stateBuckets_00002_00003, stateBuckets_00003_00003], (actionFrom_00003 + -1))
+{0..7}
+DISCRETE aux20 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], (actionFrom_00002 + -1))
+{0..4}
+DISCRETE aux21 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00005, stateBuckets_00002_00005], (actionTo_00005 + -1))
+{1..7}
+DISCRETE aux22 #Active-CSE: 2 occurrences of this expression or equivalent: Element([stateBuckets_00001_00004, stateBuckets_00002_00004], (actionFrom_00004 + -1))
+{0..6}
+DISCRETE aux24 #Active-CSE: 2 occurrences of this expression or equivalent: (actionFrom_00005 + -1)
+{0..2}
+BOOL aux25 #Active-CSE: 2 occurrences of this expression or equivalent: (actionFrom_00004 + -1)
+DISCRETE aux26 #Active-CSE: 2 occurrences of this expression or equivalent: (actionFrom_00003 + -1)
+{0..2}
+DISCRETE aux27 #Active-CSE: 2 occurrences of this expression or equivalent: (actionFrom_00002 + -1)
+{0..2}
+BOOL aux28 #Active-CSE: 2 occurrences of this expression or equivalent: (actionFrom_00006 + -1)
+BOOL aux29 #Active-CSE: 2 occurrences of this expression or equivalent: (actionTo_00007 + -1)
+DISCRETE aux30 #Active-CSE: 3 occurrences of this expression or equivalent: (actionTo_00002 + -1)
+{0..2}
+DISCRETE aux31 #Active-CSE: 3 occurrences of this expression or equivalent: (actionTo_00003 + -1)
+{0..2}
+DISCRETE aux32 #Active-CSE: 3 occurrences of this expression or equivalent: (actionTo_00004 + -1)
+{0..2}
+BOOL aux33 #Active-CSE: 3 occurrences of this expression or equivalent: (actionTo_00005 + -1)
+BOOL aux34 #Active-CSE: 3 occurrences of this expression or equivalent: (actionTo_00001 + -2)
+DISCRETE aux35 #Element([stateBuckets_00001_00006, stateBuckets_00002_00006], aux28) --- (Element([stateBuckets_00001_00005, stateBuckets_00002_00005], aux28) - actionAmount_00006)
+{1..4}
+DISCRETE aux36 #Element([stateBuckets_00001_00001, stateBuckets_00002_00001, stateBuckets_00003_00001], aux27)
+{1..5}
+DISCRETE aux37 #Element([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], aux26)
+{1..8}
+DISCRETE aux38 #Element([stateBuckets_00001_00003, stateBuckets_00002_00003], aux25)
+{0..7}
+DISCRETE aux39 #Element([stateBuckets_00001_00004, stateBuckets_00002_00004, stateBuckets_00003_00004], aux24)
+{1..6}
+DISCRETE aux41 #Element([stateBuckets_00001_00001, stateBuckets_00002_00001, stateBuckets_00003_00001], aux30)
+{0..5}
+DISCRETE aux42 #Element([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], aux31)
+{0..4}
+DISCRETE aux43 #Element([stateBuckets_00001_00003, stateBuckets_00002_00003, stateBuckets_00003_00003], aux32)
+{0..3}
+DISCRETE aux44 #Element([stateBuckets_00001_00004, stateBuckets_00002_00004], aux33)
+{0..7}
+DISCRETE aux45 #Element([stateBuckets_00001_00005, stateBuckets_00002_00005], aux28)
+{1..7}
+**VARIABLES**
+ALIAS CAPACITIES[3]=[8, 5, 3]
+**SEARCH**
+PRINT[[stateBuckets_00001_00001],[stateBuckets_00001_00002],[stateBuckets_00001_00003],[stateBuckets_00001_00004],[stateBuckets_00001_00005],[stateBuckets_00001_00006],[stateBuckets_00002_00001],[stateBuckets_00002_00002],[stateBuckets_00002_00003],[stateBuckets_00002_00004],[stateBuckets_00002_00005],[stateBuckets_00002_00006],[stateBuckets_00003_00001],[stateBuckets_00003_00002],[stateBuckets_00003_00003],[stateBuckets_00003_00004],[stateBuckets_00003_00005],[actionFrom_00002],[actionFrom_00003],[actionFrom_00004],[actionFrom_00005],[actionFrom_00006],[actionTo_00001],[actionTo_00002],[actionTo_00003],[actionTo_00004],[actionTo_00005],[actionTo_00007],[actionAmount_00001],[actionAmount_00002],[actionAmount_00003],[actionAmount_00004],[actionAmount_00005],[actionAmount_00006]]
+VARORDER STATIC [stateBuckets_00001_00001, stateBuckets_00001_00002, stateBuckets_00001_00003, stateBuckets_00001_00004, stateBuckets_00001_00005, stateBuckets_00001_00006, stateBuckets_00002_00001, stateBuckets_00002_00002, stateBuckets_00002_00003, stateBuckets_00002_00004, stateBuckets_00002_00005, stateBuckets_00002_00006, stateBuckets_00003_00001, stateBuckets_00003_00002, stateBuckets_00003_00003, stateBuckets_00003_00004, stateBuckets_00003_00005, actionFrom_00002, actionFrom_00003, actionFrom_00004, actionFrom_00005, actionFrom_00006, actionTo_00001, actionTo_00002, actionTo_00003, actionTo_00004, actionTo_00005, actionTo_00007, actionAmount_00001, actionAmount_00002, actionAmount_00003, actionAmount_00004, actionAmount_00005, actionAmount_00006]
+**CONSTRAINTS**
+watchelement([stateBuckets_00001_00001, stateBuckets_00002_00001, stateBuckets_00003_00001], aux27, aux36)
+watchelement([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], aux26, aux37)
+watchelement([stateBuckets_00001_00003, stateBuckets_00002_00003], aux25, aux38)
+watchelement([stateBuckets_00001_00004, stateBuckets_00002_00004, stateBuckets_00003_00004], aux24, aux39)
+watchelement([0, 0], aux34, 0)
+watchelement([stateBuckets_00001_00001, stateBuckets_00002_00001, stateBuckets_00003_00001], aux30, aux41)
+watchelement([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], aux31, aux42)
+watchelement([stateBuckets_00001_00003, stateBuckets_00002_00003, stateBuckets_00003_00003], aux32, aux43)
+watchelement([stateBuckets_00001_00004, stateBuckets_00002_00004], aux33, aux44)
+watchelement([stateBuckets_00001_00005, stateBuckets_00002_00005], aux28, aux45)
+watchelement([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], aux30, aux15)
+watchelement([stateBuckets_00001_00003, stateBuckets_00002_00003, stateBuckets_00003_00003], aux31, aux16)
+watchelement([stateBuckets_00001_00004, stateBuckets_00002_00004, stateBuckets_00003_00004], aux32, aux17)
+watchelement([stateBuckets_00001_00005, stateBuckets_00002_00005, stateBuckets_00003_00005], aux24, aux18)
+watchelement([stateBuckets_00001_00003, stateBuckets_00002_00003, stateBuckets_00003_00003], aux26, aux19)
+watchelement([stateBuckets_00001_00002, stateBuckets_00002_00002, stateBuckets_00003_00002], aux27, aux20)
+watchelement([stateBuckets_00001_00005, stateBuckets_00002_00005], aux33, aux21)
+watchelement([stateBuckets_00001_00004, stateBuckets_00002_00004], aux25, aux22)
+watchelement([stateBuckets_00002_00001, stateBuckets_00003_00001], aux34, actionAmount_00001)
+diseq(actionTo_00002,actionFrom_00002)
+diseq(actionTo_00003,actionFrom_00003)
+diseq(actionTo_00004,actionFrom_00004)
+diseq(actionTo_00005,actionFrom_00005)
+watched-or({w-literal(actionTo_00001,2),w-literal(stateBuckets_00002_00001,0)})
+watched-or({w-literal(stateBuckets_00003_00001,0),w-literal(actionTo_00001,3)})
+watched-or({gaceq(stateBuckets_00001_00001,stateBuckets_00001_00002),w-literal(actionTo_00002,1),w-literal(actionFrom_00002,1)})
+watched-or({w-literal(actionTo_00002,2),w-literal(actionFrom_00002,2),gaceq(stateBuckets_00002_00001,stateBuckets_00002_00002)})
+watched-or({gaceq(stateBuckets_00003_00001,stateBuckets_00003_00002),w-literal(actionTo_00002,3),w-literal(actionFrom_00002,3)})
+watched-or({gaceq(stateBuckets_00001_00002,stateBuckets_00001_00003),w-literal(actionTo_00003,1),w-literal(actionFrom_00003,1)})
+watched-or({w-literal(actionTo_00003,2),w-literal(actionFrom_00003,2),gaceq(stateBuckets_00002_00002,stateBuckets_00002_00003)})
+watched-or({gaceq(stateBuckets_00003_00002,stateBuckets_00003_00003),w-literal(actionTo_00003,3),w-literal(actionFrom_00003,3)})
+watched-or({gaceq(stateBuckets_00001_00003,stateBuckets_00001_00004),w-literal(actionTo_00004,1),w-literal(actionFrom_00004,1)})
+watched-or({w-literal(actionTo_00004,2),w-literal(actionFrom_00004,2),gaceq(stateBuckets_00002_00003,stateBuckets_00002_00004)})
+watched-or({gaceq(stateBuckets_00003_00003,stateBuckets_00003_00004),w-literal(actionTo_00004,3)})
+watched-or({gaceq(stateBuckets_00001_00004,stateBuckets_00001_00005),w-literal(actionTo_00005,1),w-literal(actionFrom_00005,1)})
+watched-or({w-literal(actionTo_00005,2),w-literal(actionFrom_00005,2),gaceq(stateBuckets_00002_00004,stateBuckets_00002_00005)})
+watched-or({gaceq(stateBuckets_00003_00004,stateBuckets_00003_00005),w-literal(actionFrom_00005,3)})
+watched-or({gaceq(stateBuckets_00001_00005,stateBuckets_00001_00006),w-literal(actionFrom_00006,1)})
+watched-or({w-literal(actionFrom_00006,2),gaceq(stateBuckets_00002_00005,stateBuckets_00002_00006)})
+watched-or({w-literal(stateBuckets_00001_00006,4),w-literal(actionTo_00007,1)})
+watched-or({w-literal(actionTo_00007,2),w-literal(stateBuckets_00002_00006,4)})
+watchelement([5, 3], aux34, actionAmount_00001)
+watched-or({watchelement([8, 5, 3], aux30, aux15),w-literal(aux20,0)})
+watched-or({watchelement([8, 5, 3], aux31, aux16),w-literal(aux19,0)})
+watched-or({watchelement([8, 5, 3], aux32, aux17),w-literal(aux22,0)})
+watched-or({watchelement([8, 5], aux33, aux21),w-literal(aux18,0)})
+watchelement([stateBuckets_00001_00006, stateBuckets_00002_00006], aux28, aux35)
+watchelement([4, 4], aux29, 4)
+watchelement([stateBuckets_00001_00006, stateBuckets_00002_00006], aux29, 1)
+sumleq([actionFrom_00005,-1],aux24)
+sumgeq([actionFrom_00005,-1],aux24)
+sumleq([actionFrom_00004,-1],aux25)
+sumgeq([actionFrom_00004,-1],aux25)
+sumleq([actionFrom_00003,-1],aux26)
+sumgeq([actionFrom_00003,-1],aux26)
+sumleq([actionFrom_00002,-1],aux27)
+sumgeq([actionFrom_00002,-1],aux27)
+sumleq([actionFrom_00006,-1],aux28)
+sumgeq([actionFrom_00006,-1],aux28)
+sumleq([actionTo_00007,-1],aux29)
+sumgeq([actionTo_00007,-1],aux29)
+sumleq([actionTo_00002,-1],aux30)
+sumgeq([actionTo_00002,-1],aux30)
+sumleq([actionTo_00003,-1],aux31)
+sumgeq([actionTo_00003,-1],aux31)
+sumleq([actionTo_00004,-1],aux32)
+sumgeq([actionTo_00004,-1],aux32)
+sumleq([actionTo_00005,-1],aux33)
+sumgeq([actionTo_00005,-1],aux33)
+sumleq([actionTo_00001,-2],aux34)
+sumgeq([actionTo_00001,-2],aux34)
+weightedsumleq([1,-1],[8,actionAmount_00001],stateBuckets_00001_00001)
+weightedsumgeq([1,-1],[8,actionAmount_00001],stateBuckets_00001_00001)
+weightedsumleq([1,-1],[aux36,actionAmount_00002],aux20)
+weightedsumgeq([1,-1],[aux36,actionAmount_00002],aux20)
+weightedsumleq([1,-1],[aux37,actionAmount_00003],aux19)
+weightedsumgeq([1,-1],[aux37,actionAmount_00003],aux19)
+weightedsumleq([1,-1],[aux38,actionAmount_00004],aux22)
+weightedsumgeq([1,-1],[aux38,actionAmount_00004],aux22)
+weightedsumleq([1,-1],[aux39,actionAmount_00005],aux18)
+weightedsumgeq([1,-1],[aux39,actionAmount_00005],aux18)
+sumleq([aux41,actionAmount_00002],aux15)
+sumgeq([aux41,actionAmount_00002],aux15)
+sumleq([aux42,actionAmount_00003],aux16)
+sumgeq([aux42,actionAmount_00003],aux16)
+sumleq([aux43,actionAmount_00004],aux17)
+sumgeq([aux43,actionAmount_00004],aux17)
+sumleq([aux44,actionAmount_00005],aux21)
+sumgeq([aux44,actionAmount_00005],aux21)
+sumleq([stateBuckets_00003_00005,actionAmount_00006],3)
+sumgeq([stateBuckets_00003_00005,actionAmount_00006],3)
+weightedsumleq([1,-1],[aux45,actionAmount_00006],aux35)
+weightedsumgeq([1,-1],[aux45,actionAmount_00006],aux35)
+**EOF**

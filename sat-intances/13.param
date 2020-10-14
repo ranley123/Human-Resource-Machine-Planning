@@ -1,0 +1,6 @@
+$ For each pair of elements, multiply them and output the result
+language ESSENCE' 1.0
+letting input=[3,4,12,3,10,9]
+letting output=[12,36,90]
+letting MAX_OPS=14
+letting num_registers=1

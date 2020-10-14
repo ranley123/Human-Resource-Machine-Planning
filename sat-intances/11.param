@@ -1,0 +1,6 @@
+$ For each pair of elements, send a 0 if they are equal and a 1 if they are not
+language ESSENCE' 1.0
+letting input=[12,12,1,0,9,10,4,4,5,8,0,10,11,11,60,61,70,70,1,2,1,1]
+letting output=[0,1,1,0,1,1,0,1,0,1,0]
+letting MAX_OPS=24
+letting num_registers=1

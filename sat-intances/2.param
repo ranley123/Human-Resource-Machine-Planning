@@ -1,0 +1,6 @@
+$ reverse the order
+language ESSENCE' 1.0
+letting input=[3,2,1]
+letting output=[1,2,3]
+letting MAX_OPS=9
+letting num_registers=2

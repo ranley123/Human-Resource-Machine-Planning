@@ -1,0 +1,6 @@
+$ For each element in the input, output the fibonacci sequence up to, but not exceeding the value
+language ESSENCE' 1.0
+letting input=[1,6,23]
+letting output=[1,1,1,2,3,5,1,1,2,3,5,8,13,21]
+letting MAX_OPS=3
+letting num_registers=0

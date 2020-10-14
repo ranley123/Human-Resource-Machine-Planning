@@ -1,0 +1,6 @@
+$ For each THREE THINGS in the INBOX, send them to the OUTBOX in order from smallest to largest.
+language ESSENCE' 1.0
+letting input=[8,5,12,8,7,5]
+letting output=[5,8,12,5,7,8]
+letting MAX_OPS=14
+letting num_registers=1

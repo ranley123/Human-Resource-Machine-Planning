@@ -1,0 +1,6 @@
+$ For each two things, put only the bigger one
+language ESSENCE' 1.0
+letting input=[8,9,5,3,12,6]
+letting output=[8,5,12]
+letting MAX_OPS=10
+letting num_registers=2

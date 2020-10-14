@@ -1,0 +1,6 @@
+$ Send each thing from the INBOX to the OUTBOX. BUT, if a number is less than 10, first make it 10
+language ESSENCE' 1.0
+letting input=[12,4,1,25,9,10,1,14]
+letting output=[12,10,10,25,10,10,10,14]
+letting MAX_OPS=11
+letting num_registers=4

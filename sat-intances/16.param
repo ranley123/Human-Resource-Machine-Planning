@@ -1,0 +1,7 @@
+$ Output the smallest number of each zero-terminated string
+language ESSENCE' 1.0
+letting input=[1,6,23,0,45,13,10,0,4,1,0,30,0,50]
+letting output=[1,10,1,30]
+letting MAX_OPS=17
+letting num_registers=1
+

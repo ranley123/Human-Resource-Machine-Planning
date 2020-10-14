@@ -1,0 +1,6 @@
+$ For each two things in the INBOX, OUTBOX the remainder that would result if you had divided the first by the second.
+language ESSENCE' 1.0
+letting input=[4,2,3,2,8,5]
+letting output=[0,5,6]
+letting MAX_OPS=12
+letting num_registers=3

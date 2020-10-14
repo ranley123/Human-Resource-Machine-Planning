@@ -1,0 +1,6 @@
+$ Triple each thing in the inbox and output it
+language ESSENCE' 1.0
+letting input=[4,8,5,10,20]
+letting output=[12,24,15,30,60]
+letting MAX_OPS=20
+letting num_registers=1

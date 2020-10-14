@@ -1,0 +1,6 @@
+$ for each two things, add them and output the sum
+language ESSENCE' 1.0
+letting input=[3,2,9,12]
+letting output=[5,21]
+letting MAX_OPS=10
+letting num_registers=1

@@ -1,0 +1,6 @@
+$ multiply each element by 8 and output it
+language ESSENCE' 1.0
+letting input=[4,8,5]
+letting output=[32,64,40]
+letting MAX_OPS=14
+letting num_registers=1

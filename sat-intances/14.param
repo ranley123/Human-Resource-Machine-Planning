@@ -1,0 +1,6 @@
+$ The inbox has sequences of zero terminated numbers, add them and output each value
+language ESSENCE' 1.0
+letting input=[1,2,3,0,12,12,12,0,5,0]
+letting output=[6,36,5]
+letting MAX_OPS=16
+letting num_registers=1

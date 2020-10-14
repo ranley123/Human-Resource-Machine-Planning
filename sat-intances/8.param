@@ -1,0 +1,6 @@
+$ for each two things in the INBOX if they are equal output them
+language ESSENCE' 1.0
+letting input=[8,8,5,3,6,4,4,70,70,3,12,12]
+letting output=[8,4,70,12]
+letting MAX_OPS=15
+letting num_registers=1

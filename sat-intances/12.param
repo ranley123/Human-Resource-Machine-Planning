@@ -1,0 +1,6 @@
+$ Countdown! For each input number, output it and the countdown to zero.
+language ESSENCE' 1.0
+letting input=[4,3,2,1,0]
+letting output=[4,3,2,1,0,3,2,1,0,2,1,0,1,0,0]
+letting MAX_OPS=40
+letting num_registers=1

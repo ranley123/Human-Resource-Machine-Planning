@@ -1,0 +1,6 @@
+$ send all non-zero elements to the outbox
+language ESSENCE' 1.0
+letting input=[0,20,8,0,0,6,4,0]
+letting output=[20,8,6,4]
+letting MAX_OPS=11
+letting num_registers=0

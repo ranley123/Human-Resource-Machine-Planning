@@ -1,0 +1,6 @@
+$ for each two things in the INBOX, first subtract the 1st from the 2nd and put the result in the OUTBOX.
+language ESSENCE' 1.0
+letting input=[8,8,5,3,12,6]
+letting output=[0,2,6]
+letting MAX_OPS=11
+letting num_registers=1

@@ -1,0 +1,6 @@
+$ put the input on the output
+language ESSENCE' 1.0
+letting input=[1,2,3]
+letting output=[1,2,3]
+letting MAX_OPS=6
+letting num_registers=0
