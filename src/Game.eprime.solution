@@ -1,0 +1,11 @@
+language ESSENCE' 1.0
+$ Minion SolverNodes: 1
+$ Minion SolverTotalTime: 0.046645
+$ Minion SolverTimeOut: 0
+$ Savile Row TotalTime: 0.118
+letting actionFrom be [1, 1, 1, 1, 1, 1, 1]
+letting actionTo be [1, 1, 1, 1, 1, 1, 1]
+letting arg be [1, 1, 1, 1, 1, 1, 1]
+letting statePlaces be [[8, 0, 0, 0, 0, 0, 0, 4;int(0..7)], 
+[0, 0, 0, 0, 0, 0, 0, 4;int(0..7)], 
+[0, 0, 0, 0, 0, 0, 0, 0;int(0..7)]]

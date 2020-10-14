@@ -1,3 +1,6 @@
 language ESSENCE' 1.0
 
-letting steps be 7
+letting input=[1,2]
+letting output=[2,3]
+letting MAX_OPS=7
+letting num_registers=1

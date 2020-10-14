@@ -1,88 +1,58 @@
 language ESSENCE' 1.0
 
-$ CSP lib problem 18
+$ Parameters $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-$ Problem description:
-$ You are given an 8 pint bucket of water, and two empty buckets
-$ which can contain 5 and 3 pints respectively. You are required 
-$ to divide the water into two by pouring water between buckets 
-$ (that is, to end up with 4 pints in the 8 pint bucket, and 4 
-$ pints in the 5 pint bucket). What is the minimum number of 
-$ transfers of water between buckets? 
+given MAX_OPS: int(1..)
+given num_registers: int(0..)
+given input: matrix indexed by [int(1..input_length)] of int(0..100)
+given output: matrix indexed by [int(1..output_length)] of int(0..100)
 
-$$ Parameters $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-$ Solution for 7, 8 steps. 9+ will start to cycle.
+$ End of Parameters $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-given steps: int(1..)
+$ Constants $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 
-$$ End of Parameters $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+letting STEPS be domain int(0..MAX_OPS)
+letting STEPS1 be domain int(1..MAX_OPS)
+$ 0 -> IN, 1 -> OUT, 2 -> Hand, rest for registers
+letting PLACES be domain int(0..(2 + num_registers))
+letting HAND be 2
+letting IN be 0
+letting OUT be 1
 
-$$ Constants $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-letting STEPS be domain int(0..steps)
-letting STEPS1 be domain int(1..steps)
-letting BUCKETS be domain int(1..3)
-letting CAPACITIES be [8, 5, 3]
 
-$$ End of Constants $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-$$ Decision Variables $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-$ The state of the three buckets
-find stateBuckets : matrix indexed by [ BUCKETS, STEPS ] of int(0..CAPACITIES[1])
-
-$ The pouring action.
-$ Action at step i transforms state i-1 to state i
-$ Triple is (fromBucket, toBucket, amount)
-find actionFrom : matrix indexed by [ STEPS1 ] of BUCKETS
-find actionTo : matrix indexed by [ STEPS1 ] of BUCKETS
-find actionAmount : matrix indexed by [ STEPS1 ] of int(1..CAPACITIES[1])
-
-$$ End of Decision Variables $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
-$$ Constraints $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-
+find statePlaces: matrix indexed by [int(1..3), STEPS1] of int(0..100)
+find actionFrom: matrix indexed by [STEPS1] of PLACES
+find actionTo: matrix indexed by [STEPS1] of PLACES
+find arg: matrix indexed by [STEPS1] of int(-1, PLACES)
+$ find out: matrix indexed by [int(1..output_length)] of int(0..100)
+find pointers: matrix indexed by [int(0..1), STEPS] of int(1..input_length)
 such that 
 
 $ initial state
-stateBuckets[1, 0] = CAPACITIES[1], $ bucket A is full
-stateBuckets[2, 0] = 0,             $ other two buckets are empty
-stateBuckets[3, 0] = 0,
+pointers[0,0] = 1,
+pointers[1,0] = 1,
 
-$ goal state 
-stateBuckets[1, steps] = 4,
-stateBuckets[2, steps] = 4,
-stateBuckets[3, steps] = 0,
 
-$ Trim bucket capacities
-forAll step : STEPS . 
-  forAll b : BUCKETS .
-    stateBuckets[b, step] <= CAPACITIES[b],
+$ actionFrom cannot be OUT 1, actionTo cannot be IN 0
+forAll i: STEPS1 . actionFrom[i] != 1 /\ actionTo[i] != 0 /\ actionFrom[i] != actionTo[i],
 
-$ Cannot pour water from a bucket to itself
-forAll step : STEPS1 . actionFrom[step] != actionTo[step],
+$ pointers
+forAll step: STEPS1 .
+  actionFrom[step] = IN -> ((pointers[IN, step] = pointers[IN, step-1] + 1) /\ (actionTo[step] = HAND /\ input[pointers[IN, step]] = statePlaces[actionTo[step], step])),
 
-$ Preservation of water: from bucket is reduced by appropriate amount
-forAll step : STEPS1 . 
-  stateBuckets[actionFrom[step], step-1] - actionAmount[step] = 
-  stateBuckets[actionFrom[step], step], 
+forAll step: STEPS1 .
+  actionFrom[step] != IN -> pointers[IN, step] = pointers[IN, step - 1],
 
-$ Preservation of water: to bucket is increased by appropriate amount
-forAll step : STEPS1 .
-  stateBuckets[actionTo[step], step-1] + actionAmount[step] =
-  stateBuckets[actionTo[step], step],
-  
-$ Other bucket is unchanged.
-forAll step : STEPS1 .
-  forAll b : BUCKETS . 
-    b != actionFrom[step] /\ b != actionTo[step]
-    ->
-    stateBuckets[b, step-1] = stateBuckets[b, step],
-    
-$ after an action, either the source bucket is empty or target bucket is full
-$ Prevents trying to pour just a little bit.
-forAll step : STEPS1 .
-  stateBuckets[actionFrom[step], step] = 0
+forAll step: STEPS1 .
+  actionTo[step] = OUT -> pointers[OUT, step] = pointers[OUT, step - 1] + 1,
+
+forAll step: STEPS1 .
+  actionTo[step] != OUT -> pointers[OUT, step] = pointers[OUT, step - 1],
+
+forAll step: STEPS1 .
+$ IN: actionTo = Hand /\ input[i] = 
+  actionFrom[step] = IN -> (actionTo[step] = HAND /\ input[pointers[IN, step]] = statePlaces[actionTo[step], step])
   \/
-  stateBuckets[actionTo[step], step] = CAPACITIES[actionTo[step]],
+  actionTo[step] = OUT -> (actionFrom[step] = HAND /\ output[pointers[OUT, step]] = statePlaces[actionFrom[step], step]),
   
 true
