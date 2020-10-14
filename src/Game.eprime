@@ -31,6 +31,7 @@ such that
 $ initial state
 pointers[0,0] = 1,
 pointers[1,0] = 1,
+actionFrom[1] = 0,
 
 
 $ actionFrom cannot be OUT 1, actionTo cannot be IN 0
@@ -44,15 +45,10 @@ forAll step: STEPS1 .
   actionFrom[step] != IN -> pointers[IN, step] = pointers[IN, step - 1],
 
 forAll step: STEPS1 .
-  actionTo[step] = OUT -> pointers[OUT, step] = pointers[OUT, step - 1] + 1,
+  actionTo[step] = OUT -> ((pointers[OUT, step] = pointers[OUT, step - 1] + 1) /\ (actionFrom[step] = HAND /\ output[pointers[OUT, step]] = statePlaces[actionFrom[step], step])),
 
 forAll step: STEPS1 .
   actionTo[step] != OUT -> pointers[OUT, step] = pointers[OUT, step - 1],
 
-forAll step: STEPS1 .
-$ IN: actionTo = Hand /\ input[i] = 
-  actionFrom[step] = IN -> (actionTo[step] = HAND /\ input[pointers[IN, step]] = statePlaces[actionTo[step], step])
-  \/
-  actionTo[step] = OUT -> (actionFrom[step] = HAND /\ output[pointers[OUT, step]] = statePlaces[actionFrom[step], step]),
-  
+
 true
