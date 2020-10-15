@@ -7,9 +7,9 @@ MINION 3
 # CSE_active_total_size = 0
 **VARIABLES**
 **VARIABLES**
-ALIAS output[2]=[1, 2]
+ALIAS output[4]=[1, 2, 3, 4]
 **VARIABLES**
-ALIAS input[2]=[1, 2]
+ALIAS input[4]=[1, 2, 3, 4]
 **SEARCH**
 PRINT[]
 VARORDER STATIC []
