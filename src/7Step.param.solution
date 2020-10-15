@@ -1,13 +1,12 @@
 language ESSENCE' 1.0
-$ Minion SolverNodes: 20
-$ Minion SolverTotalTime: 0.050043
+$ Minion SolverNodes: 1
+$ Minion SolverTotalTime: 0.050955
 $ Minion SolverTimeOut: 0
-$ Savile Row TotalTime: 0.244
-letting actionFrom be [0, 2, 2, 2, 2, 2, 2]
-letting actionTo be [2, 3, 3, 3, 3, 3, 3]
-letting arg be [-1, -1, -1, -1, -1, -1, -1]
-letting pointers be [[1, 2, 2, 2, 2, 2, 2, 2;int(0..7)], 
-[1, 1, 1, 1, 1, 1, 1, 1;int(0..7)];int(0..1)]
-letting statePlaces be [[0, 0, 0, 0, 0, 0, 0], 
-[2, 0, 0, 0, 0, 0, 0], 
-[0, 0, 0, 0, 0, 0, 0]]
+$ Savile Row TotalTime: 0.249
+letting actionFrom be [0, 2, 0, 2, 0]
+letting actionTo be [2, 1, 2, 1, 1]
+letting actionTypes be [1, 2, 1, 2, 0]
+letting pointers be [[0, 1, 1, 2, 2, 2;int(0..5)], 
+[0, 0, 1, 1, 2, 2;int(0..5)];int(0..1)]
+letting statePlaces be [[-1, 1, -1, 2, -1, -1;int(0..5)], 
+[-1, -1, -1, -1, -1, -1;int(0..5)];int(2..3)]
