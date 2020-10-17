@@ -1,11 +1,16 @@
 language ESSENCE' 1.0
+
 $ Parameters $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 given MAX_OPS: int(1..)
 given num_registers: int(0..)
 given input: matrix indexed by [int(1..input_length)] of int(0..100)
 given output: matrix indexed by [int(1..output_length)] of int(0..100)
+
 $ End of Parameters $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 $ Constants $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 letting STEPS be domain int(0..MAX_OPS)
 letting STEPS1 be domain int(1..MAX_OPS)
 $ 0 -> IN, 1 -> OUT, 2 -> Hand, rest for registers
@@ -13,6 +18,7 @@ letting PLACES be domain int(0..(2 + num_registers))
 letting HAND be 2
 letting IN be 0
 letting OUT be 1
+
 $ operators
 letting INBOX be 1
 letting OUTBOX be 2
@@ -22,24 +28,39 @@ letting ADD be 5
 letting SUB be 6
 letting BUMPPLUS be 7
 letting BUMPMINUS be 8
+
 find statePlaces: matrix indexed by [int(2..(2+num_registers)), STEPS] of int(-1..100)
-find actionTypes: matrix indexed by [STEPS1] of int(1..4)
+find actionTypes: matrix indexed by [STEPS1] of int(0..8)
 find actionFrom: matrix indexed by [STEPS1] of PLACES
 find actionTo: matrix indexed by [STEPS1] of PLACES
+
 find pointers: matrix indexed by [int(0..1), STEPS] of int(0..max(input_length, output_length))
 such that 
 
 $ initial state
 pointers[0,0] = 0,
 pointers[1,0] = 0,
+pointers[IN, 1] = 1,
 pointers[OUT, MAX_OPS] = output_length,
+
 forAll i: int(2..(2 + num_registers)) .
   statePlaces[i, 0] = -1,
+
+$ avoid duplicate state
+forAll step1: STEPS1 .
+  forAll step2: int((step1 + 1)..MAX_OPS) .
+    actionTypes[step1] != 0 /\ actionTypes[step2] != 0 /\ step1 < MAX_OPS->
+    statePlaces[.., step1] <lex statePlaces[.., step2]
+    \/
+    statePlaces[.., step1] >lex statePlaces[.., step2]
+    \/
+    pointers[.., step1] <lex pointers[.., step2],
 
 $ when it is not INBOX or OUTBOX, then pointers keep the same
 forAll step: STEPS1 .
   actionTypes[step] != INBOX ->
   pointers[IN, step] = pointers[IN, step - 1],
+
 forAll step: STEPS1 .
   actionTypes[step] != OUTBOX ->
   pointers[OUT, step] = pointers[OUT, step - 1],
@@ -48,6 +69,7 @@ $ when 0
 forAll step: STEPS1 .
   pointers[OUT, step - 1] = output_length <->
   actionTypes[step] = 0,
+
 
 $ when registers dont need to change
 forAll step: STEPS1 .
@@ -84,7 +106,7 @@ forAll step: STEPS1 .
   pointers[IN, step] <= input_length
   /\ $ the hand value and input value is the same
   input[pointers[IN, step]] = statePlaces[HAND, step],
-  
+
 $ when OUTBOX
 forAll step: STEPS1 .
   actionTypes[step] = OUTBOX -> 
@@ -106,7 +128,7 @@ forAll step: STEPS1 .
 $ when COPYFROM REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = COPYFROM -> 
-$   $ actionFrom a REG
+  $ actionFrom a REG
   actionFrom[step] >= 3
   /\
   actionFrom[step] <= (2 + num_registers)
@@ -123,7 +145,7 @@ forAll step: STEPS1 .
   $ must from HAND
   actionFrom[step] = HAND
   /\ $ the HAND is not empty
-  statePlaces[HAND, step] != -1
+  statePlaces[HAND, step-1] != -1
   /\
   actionTo[step] >= 3
   /\
@@ -192,4 +214,5 @@ forAll step: STEPS1 .
   statePlaces[actionFrom[step], step] = statePlaces[actionFrom[step], step - 1] - 1
   /\
   statePlaces[actionFrom[step], step] = statePlaces[HAND, step],
+
 true
