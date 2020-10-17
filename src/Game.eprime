@@ -31,7 +31,7 @@ letting BUMPPLUS be 7
 letting BUMPMINUS be 8
 
 find statePlaces: matrix indexed by [int(2..(2+num_registers)), STEPS] of int(-1..100)
-find actionTypes: matrix indexed by [STEPS1] of int(0..8)
+find actionTypes: matrix indexed by [STEPS1] of int(1..6)
 find actionFrom: matrix indexed by [STEPS1] of PLACES
 find actionTo: matrix indexed by [STEPS1] of PLACES
 
@@ -41,14 +41,11 @@ such that
 $ initial state
 pointers[0,0] = 0,
 pointers[1,0] = 0,
-pointers[IN, MAX_OPS] > 0,
-pointers[OUT, MAX_OPS] = input_length,
+pointers[IN, 1] = 1,
+pointers[OUT, MAX_OPS] = output_length,
 
 forAll i: int(2..(2 + num_registers)) .
   statePlaces[i, 0] = -1,
-
-$ actionFrom cannot be OUT 1, actionTo cannot be IN 0
-forAll i: STEPS1 . actionFrom[i] != OUT /\ actionTo[i] != IN,
 
 $ when it is not INBOX or OUTBOX, then pointers keep the same
 forAll step: STEPS1 .
@@ -59,62 +56,78 @@ forAll step: STEPS1 .
   actionTypes[step] != OUTBOX ->
   pointers[OUT, step] = pointers[OUT, step - 1],
 
-$ when successful 0
-forAll step: STEPS1 .
-  actionTypes[step] = 0 ->
-  pointers[OUT, step] = input_length,
-
-$ when INBOX
-forAll step: STEPS1 .
-  actionTypes[step] = INBOX -> 
-  $ move the input pointer to a new box
-  pointers[IN, step] = pointers[IN, step - 1] + 1
-  /\ $ the actionFrom must be IN
-  actionFrom[step] = IN
-  /\ $ the actionTo must be HAND
-  actionTo[step] = HAND
-  /\ $ the hand value and input value is the same
-  input[pointers[IN, step]] = statePlaces[HAND, step],
+$ $ when successful 0
+$ forAll step: STEPS1 .
+$   actionTypes[step] = 0 ->
+$   pointers[OUT, step] = output_length,
 
 $ when registers dont need to change
 forAll step: STEPS1 .
   forAll i: int(3..(2 + num_registers)) .
-    actionTypes[step] = INBOX \/ actionTypes[step] = OUTBOX \/ actionTypes[step] = COPYFROM \/ actionTypes[step] = ADD \/ actionTypes[step] = SUB ->
+    actionTypes[step] = INBOX \/ actionTypes[step] = OUTBOX 
+    \/ 
+    actionTypes[step] = COPYFROM \/ actionTypes[step] = ADD 
+    \/ 
+    actionTypes[step] = SUB \/ actionTypes[step] = 0
+    \/ 
+    (actionTypes[step] = COPYTO /\ actionTo[step] != i) 
+    \/ 
+    (actionTypes[step] =BUMPPLUS /\ actionFrom[step] != i) 
+    \/ 
+    (actionTypes[step] = BUMPMINUS /\ actionFrom[step] != i) ->
     statePlaces[i, step] = statePlaces[i, step - 1],
 
 $ when HAND doesnt need to change
 forAll step: STEPS1 .
-  actionTypes[step] = COPYTO ->
+  actionTypes[step] = COPYTO \/ actionTypes[step] = 0 ->
   statePlaces[HAND, step] = statePlaces[HAND, step - 1],
+
+$ when INBOX: IN -> HAND
+forAll step: STEPS1 .
+  actionTypes[step] = INBOX -> 
+  $ actionFrom IN
+  actionFrom[step] = IN
+  /\ $ actionTo HAND
+  actionTo[step] = HAND
+  /\
+  $ move the input pointer 
+  pointers[IN, step] = pointers[IN, step - 1] + 1
+  /\
+  pointers[IN, step] <= input_length
+  /\ $ the hand value and input value is the same
+  input[pointers[IN, step]] = statePlaces[HAND, step],
 
 $ when OUTBOX
 forAll step: STEPS1 .
   actionTypes[step] = OUTBOX -> 
-  pointers[OUT, step] = pointers[OUT, step - 1] + 1
-  /\ $ actionFrom must be HAND
-  (actionFrom[step] = HAND) 
-  /\
+  $ actionFrom Hand
+  actionFrom[step] = HAND
+  /\ $ actionTo OUT
   actionTo[step] = OUT
-  /\ $ HAND is not empty in the last state
+  /\ $ move out pointer
+  pointers[OUT, step] = pointers[OUT, step - 1] + 1
+  /\ 
+  pointers[OUT, step] <= output_length
+  /\ $ HAND is not empty
   statePlaces[HAND, step - 1] != -1
   /\ $ HAND is empty in the current
   statePlaces[HAND, step] = -1
   /\ $ output value is equal to the HAND's last state
   output[pointers[OUT, step]] = statePlaces[HAND, step - 1],
 
-
-$ when COPYFROM
+$ when COPYFROM REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = COPYFROM -> 
+  $ actionFrom a REG
   actionFrom[step] in REGRANGE
-  /\ $ the reg box is not empty
-  statePlaces[actionFrom[step], step - 1] != -1
   /\ $ actionTo must be HAND
   actionTo[step] = HAND
+  /\ $ the REG box is not empty
+  statePlaces[actionFrom[step], step] != -1
   /\ $ the reg must be same as hand
   statePlaces[actionFrom[step], step] = statePlaces[actionTo[step], step],
 
-$ when COPYTO = 4
+$ when COPYTO = 4 HAND -> REG
 forAll step: STEPS1 .
   actionTypes[step] = COPYTO ->
   $ must from HAND
@@ -126,27 +139,27 @@ forAll step: STEPS1 .
   /\ $ values are equal
   statePlaces[actionFrom[step], step] = statePlaces[actionTo[step], step],
 
-$ when ADD
+$ when ADD: REG -> Hand
 forAll step: STEPS1 .
   actionTypes[step] = ADD ->
   $ from a reg
   actionFrom[step] in REGRANGE
   /\ $ reg is not empty
-  statePlaces[actionFrom[step], step - 1] != -1
+  statePlaces[actionFrom[step], step] != -1
   /\ $ to Hand
   actionTo[step] = HAND
   /\ $ hand is not empty
   statePlaces[actionTo[step], step - 1] != -1
-  /\
+  /\ $ previous hand state
   statePlaces[HAND, step] = statePlaces[actionFrom[step], step] + statePlaces[HAND, step - 1],
 
-$ when SUB
+$ when SUB: REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = SUB ->
   $ from a reg
   actionFrom[step] in REGRANGE
   /\ $ reg is not empty
-  statePlaces[actionFrom[step], step - 1] != -1
+  statePlaces[actionFrom[step], step] != -1
   /\ $ to Hand
   actionTo[step] = HAND
   /\ $ hand is not empty
@@ -167,12 +180,12 @@ forAll step: STEPS1 .
   /\
   statePlaces[actionFrom[step], step] = statePlaces[actionTo[step], step],
 
-$ when BUMP-
+$ when BUMP-: REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = BUMPMINUS ->
   actionFrom[step] in REGRANGE
-  $ /\
-  $ statePlaces[actionFrom[step], step] != -1
+  /\
+  statePlaces[actionFrom[step], step - 1] != -1
   /\
   actionTo[step] = HAND
   /\
