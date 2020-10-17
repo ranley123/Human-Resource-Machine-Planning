@@ -15,7 +15,6 @@ letting STEPS be domain int(0..MAX_OPS)
 letting STEPS1 be domain int(1..MAX_OPS)
 $ 0 -> IN, 1 -> OUT, 2 -> Hand, rest for registers
 letting PLACES be domain int(0..(2 + num_registers))
-letting REGRANGE be domain int (3..(2 + num_registers))
 letting HAND be 2
 letting IN be 0
 letting OUT be 1
@@ -31,11 +30,11 @@ letting BUMPPLUS be 7
 letting BUMPMINUS be 8
 
 find statePlaces: matrix indexed by [int(2..(2+num_registers)), STEPS] of int(-1..100)
-find actionTypes: matrix indexed by [STEPS1] of int(1..6)
+find actionTypes: matrix indexed by [STEPS1] of int(0..8)
 find actionFrom: matrix indexed by [STEPS1] of PLACES
 find actionTo: matrix indexed by [STEPS1] of PLACES
 
-find pointers: matrix indexed by [int(0..1), STEPS] of int(0..input_length)
+find pointers: matrix indexed by [int(0..1), STEPS] of int(0..max(input_length, output_length))
 such that 
 
 $ initial state
@@ -56,10 +55,11 @@ forAll step: STEPS1 .
   actionTypes[step] != OUTBOX ->
   pointers[OUT, step] = pointers[OUT, step - 1],
 
-$ $ when successful 0
-$ forAll step: STEPS1 .
-$   actionTypes[step] = 0 ->
-$   pointers[OUT, step] = output_length,
+$ when 0
+forAll step: STEPS1 .
+  pointers[OUT, step - 1] = output_length <->
+  actionTypes[step] = 0,
+
 
 $ when registers dont need to change
 forAll step: STEPS1 .
@@ -119,7 +119,9 @@ $ when COPYFROM REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = COPYFROM -> 
   $ actionFrom a REG
-  actionFrom[step] in REGRANGE
+  actionFrom[step] >= 3
+  /\
+  actionFrom[step] <= (2 + num_registers)
   /\ $ actionTo must be HAND
   actionTo[step] = HAND
   /\ $ the REG box is not empty
@@ -133,9 +135,11 @@ forAll step: STEPS1 .
   $ must from HAND
   actionFrom[step] = HAND
   /\ $ the HAND is not empty
-  statePlaces[HAND, step] != -1
-  /\ $ must to reg
-  actionTo[step] in REGRANGE
+  statePlaces[HAND, step-1] != -1
+  /\
+  actionFrom[step] >= 3
+  /\
+  actionFrom[step] <= (2 + num_registers)
   /\ $ values are equal
   statePlaces[actionFrom[step], step] = statePlaces[actionTo[step], step],
 
@@ -143,7 +147,9 @@ $ when ADD: REG -> Hand
 forAll step: STEPS1 .
   actionTypes[step] = ADD ->
   $ from a reg
-  actionFrom[step] in REGRANGE
+  actionFrom[step] >= 3
+  /\
+  actionFrom[step] <= (2 + num_registers)
   /\ $ reg is not empty
   statePlaces[actionFrom[step], step] != -1
   /\ $ to Hand
@@ -157,7 +163,9 @@ $ when SUB: REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = SUB ->
   $ from a reg
-  actionFrom[step] in REGRANGE
+  actionFrom[step] >= 3
+  /\
+  actionFrom[step] <= (2 + num_registers)
   /\ $ reg is not empty
   statePlaces[actionFrom[step], step] != -1
   /\ $ to Hand
@@ -170,7 +178,9 @@ forAll step: STEPS1 .
 $ when BUMP+
 forAll step: STEPS1 .
   actionTypes[step] = BUMPPLUS ->
-  actionFrom[step] in REGRANGE
+  actionFrom[step] >= 3
+  /\
+  actionFrom[step] <= (2 + num_registers)
   /\ $ the register is not empty
   statePlaces[actionFrom[step], step - 1] != -1
   /\
@@ -183,7 +193,9 @@ forAll step: STEPS1 .
 $ when BUMP-: REG -> HAND
 forAll step: STEPS1 .
   actionTypes[step] = BUMPMINUS ->
-  actionFrom[step] in REGRANGE
+  actionFrom[step] >= 3
+  /\
+  actionFrom[step] <= (2 + num_registers)
   /\
   statePlaces[actionFrom[step], step - 1] != -1
   /\
