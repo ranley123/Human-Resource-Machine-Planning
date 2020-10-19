@@ -30,7 +30,7 @@ letting BUMPPLUS be 7
 letting BUMPMINUS be 8
 
 find statePlaces: matrix indexed by [int(2..(2+num_registers)), STEPS] of int(-1..100)
-find actionTypes: matrix indexed by [STEPS1] of int(0..8)
+find actionTypes: matrix indexed by [STEPS1] of int(1..8)
 find actionFrom: matrix indexed by [STEPS1] of PLACES
 find actionTo: matrix indexed by [STEPS1] of PLACES
 
@@ -162,6 +162,8 @@ forAll step: STEPS1 .
   actionFrom[step] <= (2 + num_registers)
   /\ $ reg is not empty
   statePlaces[actionFrom[step], step] != -1
+  /\
+  statePlaces[actionFrom[step], step - 1] != -1
   /\ $ to Hand
   actionTo[step] = HAND
   /\ $ hand is not empty
