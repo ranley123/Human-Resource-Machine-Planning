@@ -1,0 +1,45 @@
+MINION 3
+# CSETopLevel_number = 0
+# CSETopLevel_eliminated_expressions = 0
+# CSETopLevel_total_size = 0
+# CSE_active_number = 2
+# CSE_active_eliminated_expressions = 4
+# CSE_active_total_size = 6
+**VARIABLES**
+DISCRETE statePlaces_00003_00005 #
+{1..2}
+DISCRETE actionTypes_00005 #
+{5..7}
+**CONSTRAINTS**
+w-inintervalset(actionTypes_00005, [5,5,7,7])
+**VARIABLES**
+DISCRETE actionTypes_00007 #
+{3..8}
+**CONSTRAINTS**
+w-inintervalset(actionTypes_00007, [3,3,6,6,8,8])
+**VARIABLES**
+BOOL aux53 #Active-CSE: 2 occurrences of this expression or equivalent: (1=statePlaces_00003_00005)
+BOOL aux54 #Active-CSE: 2 occurrences of this expression or equivalent: (2=statePlaces_00003_00005)
+BOOL aux55 #((3=actionTypes_00007) \/ (6=actionTypes_00007))
+BOOL aux56 #(5=actionTypes_00005)
+BOOL aux57 #(8=actionTypes_00007)
+BOOL aux58 #(7=actionTypes_00005)
+**VARIABLES**
+ALIAS output[3]=[1, 2, 1]
+**VARIABLES**
+ALIAS input[3]=[2, 5, 5]
+**SEARCH**
+PRINT[[statePlaces_00003_00005],[actionTypes_00005],[actionTypes_00007]]
+VARORDER STATIC [statePlaces_00003_00005, actionTypes_00005, actionTypes_00007]
+**CONSTRAINTS**
+reify(watched-or({w-literal(actionTypes_00007,3),w-literal(actionTypes_00007,6)}), aux55)
+reify(w-literal(actionTypes_00005,5), aux56)
+reify(w-literal(actionTypes_00007,8), aux57)
+reify(w-literal(actionTypes_00005,7), aux58)
+reify(w-literal(statePlaces_00003_00005,1), aux53)
+reify(w-literal(statePlaces_00003_00005,2), aux54)
+ineq(aux55, aux53, 0)
+ineq(aux56, aux53, 0)
+ineq(aux57, aux54, 0)
+ineq(aux58, aux54, 0)
+**EOF**

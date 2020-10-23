@@ -28,9 +28,10 @@ letting ADD be 5
 letting SUB be 6
 letting BUMPPLUS be 7
 letting BUMPMINUS be 8
+letting MUL be 9
 
 find statePlaces: matrix indexed by [int(2..(2+num_registers)), STEPS] of int(-1..100)
-find actionTypes: matrix indexed by [STEPS1] of int(1..8)
+find actionTypes: matrix indexed by [STEPS1] of int(1..4,9)
 find actionFrom: matrix indexed by [STEPS1] of PLACES
 find actionTo: matrix indexed by [STEPS1] of PLACES
 
@@ -84,7 +85,10 @@ forAll step: STEPS1 .
     \/ 
     (actionTypes[step] =BUMPPLUS /\ actionFrom[step] != i) 
     \/ 
-    (actionTypes[step] = BUMPMINUS /\ actionFrom[step] != i) ->
+    (actionTypes[step] = BUMPMINUS /\ actionFrom[step] != i) 
+    \/ $ extension
+    actionTypes[step] = MUL
+    ->
     statePlaces[i, step] = statePlaces[i, step - 1],
 
 $ when HAND doesnt need to change
@@ -216,5 +220,24 @@ forAll step: STEPS1 .
   statePlaces[actionFrom[step], step] = statePlaces[actionFrom[step], step - 1] - 1
   /\
   statePlaces[actionFrom[step], step] = statePlaces[HAND, step],
+
+$ when MUL: REG -> HAND
+forAll step: STEPS1 .
+    actionTypes[step] = MUL ->
+    $ from a reg
+    actionFrom[step] >= 3
+    /\
+    actionFrom[step] <= (2 + num_registers)
+    /\ $ reg is not empty
+    statePlaces[actionFrom[step], step] != -1
+    /\
+    statePlaces[actionFrom[step], step - 1] != -1
+    /\ $ to Hand
+    actionTo[step] = HAND
+    /\ $ hand is not empty
+    statePlaces[actionTo[step], step - 1] != -1
+    /\ $ previous hand state
+    statePlaces[HAND, step] = statePlaces[actionFrom[step], step] * statePlaces[HAND, step - 1],
+
 
 true
