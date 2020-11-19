@@ -4,3 +4,4 @@ letting input=[3,2,9,12]
 letting output=[5,21]
 letting MAX_OPS=10
 letting num_registers=1
+$ 1 4 1 5 2 1 4 1 5 2

@@ -1,5 +1,5 @@
 language ESSENCE' 1.0
 letting input=[3,2]
-letting output=[4,4]
-letting MAX_OPS=5
+letting output=[2,3]
+letting MAX_OPS=6
 letting num_registers=1

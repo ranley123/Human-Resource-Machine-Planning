@@ -2,5 +2,8 @@ $ Triple each thing in the inbox and output it
 language ESSENCE' 1.0
 letting input=[4,8,5]
 letting output=[12,24,15]
-letting MAX_OPS=13
+letting MAX_OPS=14
 letting num_registers=1
+
+$ inbox copyto inbox add outbox copyto add outbox inbox copyto add add outbox
+$ 1..5

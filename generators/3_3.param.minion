@@ -2,44 +2,347 @@ MINION 3
 # CSETopLevel_number = 0
 # CSETopLevel_eliminated_expressions = 0
 # CSETopLevel_total_size = 0
-# CSE_active_number = 2
-# CSE_active_eliminated_expressions = 4
-# CSE_active_total_size = 6
+# CSE_active_number = 0
+# CSE_active_eliminated_expressions = 0
+# CSE_active_total_size = 0
 **VARIABLES**
-DISCRETE statePlaces_00003_00005 #
-{1..2}
-DISCRETE actionTypes_00005 #
-{5..7}
+DISCRETE statePlaces_00002_00001 #
+{-1..100}
+DISCRETE statePlaces_00002_00002 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
 **CONSTRAINTS**
-w-inintervalset(actionTypes_00005, [5,5,7,7])
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00003 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00004 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00005 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00006 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00007 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00008 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00009 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00010 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00011 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE statePlaces_00002_00012 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00002 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00003 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00004 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00005 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00006 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
 **VARIABLES**
 DISCRETE actionTypes_00007 #
-{3..8}
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
 **CONSTRAINTS**
-w-inintervalset(actionTypes_00007, [3,3,6,6,8,8])
+false()
 **VARIABLES**
-BOOL aux53 #Active-CSE: 2 occurrences of this expression or equivalent: (1=statePlaces_00003_00005)
-BOOL aux54 #Active-CSE: 2 occurrences of this expression or equivalent: (2=statePlaces_00003_00005)
-BOOL aux55 #((3=actionTypes_00007) \/ (6=actionTypes_00007))
-BOOL aux56 #(5=actionTypes_00005)
-BOOL aux57 #(8=actionTypes_00007)
-BOOL aux58 #(7=actionTypes_00005)
+DISCRETE actionTypes_00008 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
 **VARIABLES**
-ALIAS output[3]=[1, 2, 1]
+DISCRETE actionTypes_00009 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
 **VARIABLES**
-ALIAS input[3]=[2, 5, 5]
+DISCRETE actionTypes_00010 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00011 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTypes_00012 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00001 #
+{0..2}
+DISCRETE actionFrom_00002 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00003 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00004 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00005 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00006 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00007 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00008 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00009 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00010 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00011 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionFrom_00012 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00001 #
+{0..2}
+DISCRETE actionTo_00002 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00003 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00004 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00005 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00006 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00007 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00008 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00009 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00010 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00011 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE actionTo_00012 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00002 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00003 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00004 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00005 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00006 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00007 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00008 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00009 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00010 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00011 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00000_00012 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00002 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00003 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00004 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00005 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00006 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00007 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00008 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00009 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00010 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+DISCRETE pointers_00001_00011 #
+{0..0}  #  This is an empty domain. Faking that by using 0..0 and the false() constraint below.
+**CONSTRAINTS**
+false()
+**VARIABLES**
+**VARIABLES**
+ALIAS output[3]=[1, 4, 2]
+**VARIABLES**
+ALIAS input[3]=[3, 3, 2]
 **SEARCH**
-PRINT[[statePlaces_00003_00005],[actionTypes_00005],[actionTypes_00007]]
-VARORDER STATIC [statePlaces_00003_00005, actionTypes_00005, actionTypes_00007]
+PRINT[[statePlaces_00002_00001],[statePlaces_00002_00002],[statePlaces_00002_00003],[statePlaces_00002_00004],[statePlaces_00002_00005],[statePlaces_00002_00006],[statePlaces_00002_00007],[statePlaces_00002_00008],[statePlaces_00002_00009],[statePlaces_00002_00010],[statePlaces_00002_00011],[statePlaces_00002_00012],[actionTypes_00002],[actionTypes_00003],[actionTypes_00004],[actionTypes_00005],[actionTypes_00006],[actionTypes_00007],[actionTypes_00008],[actionTypes_00009],[actionTypes_00010],[actionTypes_00011],[actionTypes_00012],[actionFrom_00001],[actionFrom_00002],[actionFrom_00003],[actionFrom_00004],[actionFrom_00005],[actionFrom_00006],[actionFrom_00007],[actionFrom_00008],[actionFrom_00009],[actionFrom_00010],[actionFrom_00011],[actionFrom_00012],[actionTo_00001],[actionTo_00002],[actionTo_00003],[actionTo_00004],[actionTo_00005],[actionTo_00006],[actionTo_00007],[actionTo_00008],[actionTo_00009],[actionTo_00010],[actionTo_00011],[actionTo_00012],[pointers_00000_00002],[pointers_00000_00003],[pointers_00000_00004],[pointers_00000_00005],[pointers_00000_00006],[pointers_00000_00007],[pointers_00000_00008],[pointers_00000_00009],[pointers_00000_00010],[pointers_00000_00011],[pointers_00000_00012],[pointers_00001_00002],[pointers_00001_00003],[pointers_00001_00004],[pointers_00001_00005],[pointers_00001_00006],[pointers_00001_00007],[pointers_00001_00008],[pointers_00001_00009],[pointers_00001_00010],[pointers_00001_00011]]
+VARORDER STATIC [statePlaces_00002_00001, statePlaces_00002_00002, statePlaces_00002_00003, statePlaces_00002_00004, statePlaces_00002_00005, statePlaces_00002_00006, statePlaces_00002_00007, statePlaces_00002_00008, statePlaces_00002_00009, statePlaces_00002_00010, statePlaces_00002_00011, statePlaces_00002_00012, actionTypes_00002, actionTypes_00003, actionTypes_00004, actionTypes_00005, actionTypes_00006, actionTypes_00007, actionTypes_00008, actionTypes_00009, actionTypes_00010, actionTypes_00011, actionTypes_00012, actionFrom_00001, actionFrom_00002, actionFrom_00003, actionFrom_00004, actionFrom_00005, actionFrom_00006, actionFrom_00007, actionFrom_00008, actionFrom_00009, actionFrom_00010, actionFrom_00011, actionFrom_00012, actionTo_00001, actionTo_00002, actionTo_00003, actionTo_00004, actionTo_00005, actionTo_00006, actionTo_00007, actionTo_00008, actionTo_00009, actionTo_00010, actionTo_00011, actionTo_00012, pointers_00000_00002, pointers_00000_00003, pointers_00000_00004, pointers_00000_00005, pointers_00000_00006, pointers_00000_00007, pointers_00000_00008, pointers_00000_00009, pointers_00000_00010, pointers_00000_00011, pointers_00000_00012, pointers_00001_00002, pointers_00001_00003, pointers_00001_00004, pointers_00001_00005, pointers_00001_00006, pointers_00001_00007, pointers_00001_00008, pointers_00001_00009, pointers_00001_00010, pointers_00001_00011]
 **CONSTRAINTS**
-reify(watched-or({w-literal(actionTypes_00007,3),w-literal(actionTypes_00007,6)}), aux55)
-reify(w-literal(actionTypes_00005,5), aux56)
-reify(w-literal(actionTypes_00007,8), aux57)
-reify(w-literal(actionTypes_00005,7), aux58)
-reify(w-literal(statePlaces_00003_00005,1), aux53)
-reify(w-literal(statePlaces_00003_00005,2), aux54)
-ineq(aux55, aux53, 0)
-ineq(aux56, aux53, 0)
-ineq(aux57, aux54, 0)
-ineq(aux58, aux54, 0)
-**EOF**
+false()**EOF**

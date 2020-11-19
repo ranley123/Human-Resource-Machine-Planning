@@ -1,0 +1,8 @@
+language ESSENCE' 1.0
+letting actionFrom be [0, 2, 3, 3, 3, 2, 0, 3, 2, 3, 2]
+letting actionTo be [2, 3, 2, 2, 2, 1, 2, 2, 1, 2, 1]
+letting actionTypes be [1, 4, 8, 8, 6, 2, 1, 6, 2, 3, 2]
+letting pointers be [[0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2;int(0..11)], 
+[0, 0, 0, 0, 0, 0, 1, 1, 1, 2, 2, 3;int(0..11)];int(0..1)]
+letting statePlaces be [[-1, 8, 8, 7, 6, 0, 0, 8, 2, 2, 6, 6;int(0..11)], 
+[-1, -1, 8, 7, 6, 6, 6, 6, 6, 6, 6, 6;int(0..11)];int(2..3)]

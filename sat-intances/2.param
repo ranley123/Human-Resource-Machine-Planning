@@ -2,5 +2,8 @@ $ reverse the order
 language ESSENCE' 1.0
 letting input=[3,2,1]
 letting output=[1,2,3]
-letting MAX_OPS=9
+letting MAX_OPS=10
 letting num_registers=2
+$ type 1 4 1 4 1 2 3 2 3 2 
+$ from 0 2 0 2 0 2 3 2 4 2
+$ to   2 3 2 4 2 1 2 1 2 1
