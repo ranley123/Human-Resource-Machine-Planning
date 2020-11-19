@@ -31,7 +31,7 @@ letting BUMPMINUS be 8
 letting MUL be 9
 
 find statePlaces: matrix indexed by [int(2..(2+num_registers)), STEPS] of int(-1..100)
-find actionTypes: matrix indexed by [STEPS1] of int(1..4,9)
+find actionTypes: matrix indexed by [STEPS1] of int(1..9)
 find actionFrom: matrix indexed by [STEPS1] of PLACES
 find actionTo: matrix indexed by [STEPS1] of PLACES
 
@@ -50,7 +50,7 @@ forAll i: int(2..(2 + num_registers)) .
 $ avoid duplicate state
 forAll step1: STEPS1 .
   forAll step2: int((step1 + 1)..MAX_OPS) .
-    actionTypes[step1] != 0 /\ actionTypes[step2] != 0 /\ step1 < MAX_OPS->
+    step1 < MAX_OPS->
     statePlaces[.., step1] <lex statePlaces[.., step2]
     \/
     statePlaces[.., step1] >lex statePlaces[.., step2]
@@ -66,12 +66,6 @@ forAll step: STEPS1 .
   actionTypes[step] != OUTBOX ->
   pointers[OUT, step] = pointers[OUT, step - 1],
 
-$ when 0
-forAll step: STEPS1 .
-  pointers[OUT, step - 1] = output_length <->
-  actionTypes[step] = 0,
-
-
 $ when registers dont need to change
 forAll step: STEPS1 .
   forAll i: int(3..(2 + num_registers)) .
@@ -79,7 +73,7 @@ forAll step: STEPS1 .
     \/ 
     actionTypes[step] = COPYFROM \/ actionTypes[step] = ADD 
     \/ 
-    actionTypes[step] = SUB \/ actionTypes[step] = 0
+    actionTypes[step] = SUB
     \/ 
     (actionTypes[step] = COPYTO /\ actionTo[step] != i) 
     \/ 
@@ -93,7 +87,7 @@ forAll step: STEPS1 .
 
 $ when HAND doesnt need to change
 forAll step: STEPS1 .
-  actionTypes[step] = COPYTO \/ actionTypes[step] = 0 \/ actionTypes[step] = OUTBOX ->
+  actionTypes[step] = COPYTO \/ actionTypes[step] = OUTBOX ->
   statePlaces[HAND, step] = statePlaces[HAND, step - 1],
 
 $ when INBOX: IN -> HAND
